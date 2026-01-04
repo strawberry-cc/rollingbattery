@@ -1,0 +1,22 @@
+[
+  {
+    "Author": "strawberry-cc",
+    "Name": "Rolling Battery",
+    "Description": "A plugin that manages or displays rolling battery information in FFXIV. (Update this with a full description of what the plugin actually does.)",
+    "InternalName": "RollingBattery",
+    "AssemblyVersion": "1.0.0.0",
+    "TestingAssemblyVersion": null,
+    "RepoUrl": "https://github.com/strawberry-cc/rollingbattery",
+    "ApplicableVersion": "any",
+    "DalamudApiLevel": 14,
+    "Punchline": "Displays rolling battery stats. (Customize this blurb.)",
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadLinkInstall": "https://github.com/strawberry-cc/rollingbattery/releases/latest/download/latest.zip",
+    "DownloadLinkTesting": "https://github.com/strawberry-cc/rollingbattery/releases/download/testing/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/strawberry-cc/rollingbattery/releases/latest/download/latest.zip",
+    "IconUrl": "https://raw.githubusercontent.com/strawberry-cc/rollingbattery/master/Data/goat.png",
+    "LastUpdate": "1701231234"
+  }
+]
+
