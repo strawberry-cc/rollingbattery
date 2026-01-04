@@ -5,7 +5,7 @@ using Dalamud.IoC;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 using FFXIVClientStructs.FFXIV.Client.Sound;
-using ImGuiNET;
+using Dalamud.Bindings.ImGui;
 using RollingBattery.Windows;
 using System;
 using System.IO;
