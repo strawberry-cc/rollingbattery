@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyVersion>1.3.0.1</AssemblyVersion>
     <Description>A battery plugin.</Description>
-    <PackageProjectUrl>https://github.com/goatcorp/RollingBattery</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/strawberry-cc/rollingbattery/</PackageProjectUrl>
     <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
