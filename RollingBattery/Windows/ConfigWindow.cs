@@ -7,6 +7,7 @@ namespace RollingBattery.Windows;
 
 public class ConfigWindow : Window, IDisposable
 {
+    private readonly Plugin plugin;
     private Configuration config;
 
     public ConfigWindow(Plugin plugin) : base("RollingBattery Config###With a constant ID")
@@ -17,6 +18,7 @@ public class ConfigWindow : Window, IDisposable
         Size = new Vector2(500, 200);
         SizeCondition = ImGuiCond.Always;
 
+        this.plugin = plugin;
         config = plugin.Configuration;
     }
 
@@ -36,6 +38,11 @@ public class ConfigWindow : Window, IDisposable
 
     public override void Draw()
     {
+        if (ImGui.Button("Open Debug Window"))
+        {
+            plugin.OpenDebugWindow();
+        }
+
         /* 
         var configValue = Configuration.SomePropertyToBeSavedAndWithADefault;
         if (ImGui.Checkbox("Random Config Bool", ref configValue))

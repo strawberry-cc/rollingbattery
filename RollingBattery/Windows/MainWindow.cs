@@ -12,7 +12,7 @@ namespace RollingBattery.Windows;
 
 public class MainWindow : Window, IDisposable
 {
-    private string goatImagePath;
+    private string imagePath;
     private Plugin plugin;
 
     // We give this window a hidden ID using ##
@@ -27,7 +27,7 @@ public class MainWindow : Window, IDisposable
             MaximumSize = new Vector2(float.MaxValue, float.MaxValue)
         };
 
-        this.goatImagePath = goatImagePath;
+        this.imagePath = goatImagePath;
         this.plugin = plugin;
     }
 
@@ -57,7 +57,7 @@ public class MainWindow : Window, IDisposable
             if (child.Success)
             {
                 ImGui.TextUnformatted("Image:");
-                var goatImage = Plugin.TextureProvider.GetFromFile(goatImagePath).GetWrapOrDefault();
+                var goatImage = Plugin.TextureProvider.GetFromFile(imagePath).GetWrapOrDefault();
                 if (goatImage != null)
                 {
                     using (ImRaii.PushIndent(55f))
