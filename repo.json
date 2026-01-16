@@ -2,14 +2,14 @@
   {
     "Author": "strawberry-cc",
     "Name": "Rolling Battery",
-    "Description": "A plugin that manages or displays rolling battery information in FFXIV. (Update this with a full description of what the plugin actually does.)",
+    "Description": "Tracks your Machinist battery usage. When using your battery, the value is saved onto an on-screen tracker. The previous two values are stored and displayed by this plugin",
     "InternalName": "RollingBattery",
     "AssemblyVersion": "1.3.0.1",
     "TestingAssemblyVersion": null,
     "RepoUrl": "https://github.com/strawberry-cc/rollingbattery",
     "ApplicableVersion": "any",
     "DalamudApiLevel": 14,
-    "Punchline": "Displays rolling battery stats. (Customize this blurb.)",
+    "Punchline": "Displays your previously used battery gauge value.",
     "IsHide": false,
     "IsTestingExclusive": false,
     "DownloadLinkInstall": "https://github.com/strawberry-cc/rollingbattery/releases/latest/download/latest.zip",
@@ -19,6 +19,7 @@
     "LastUpdate": "1701231234"
   }
 ]
+
 
 
 
