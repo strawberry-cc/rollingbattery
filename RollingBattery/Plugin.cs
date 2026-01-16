@@ -38,7 +38,7 @@ public sealed class Plugin : IDalamudPlugin
         Configuration = PluginInterface.GetPluginConfig() as Configuration ?? new Configuration();
 
         // you might normally want to embed resources and load them from the manifest stream
-        var goatImagePath = Path.Combine(PluginInterface.AssemblyLocation.Directory?.FullName!, "goat.png");
+        var goatImagePath = Path.Combine(PluginInterface.AssemblyLocation.Directory?.FullName!, "icon.png");
 
         ConfigWindow = new ConfigWindow(this);
         //MainWindow = new MainWindow(this, goatImagePath);
@@ -105,7 +105,7 @@ public sealed class Plugin : IDalamudPlugin
     {
         if (debugWindow == null)
         {
-            var goatImagePath = Path.Combine(PluginInterface.AssemblyLocation.Directory?.FullName!, "goat.png");
+            var goatImagePath = Path.Combine(PluginInterface.AssemblyLocation.Directory?.FullName!, "icon.png");
             debugWindow = new MainWindow(this, goatImagePath);
         }
         WindowSystem.AddWindow(debugWindow);
