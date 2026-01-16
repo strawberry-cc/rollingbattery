@@ -12,14 +12,14 @@ namespace RollingBattery.Windows;
 
 public class MainWindow : Window, IDisposable
 {
-    private string GoatImagePath;
-    private Plugin Plugin;
+    private string goatImagePath;
+    private Plugin plugin;
 
     // We give this window a hidden ID using ##
     // So that the user will see "My Amazing Window" as window title,
     // but for ImGui the ID is "My Amazing Window##With a hidden ID"
     public MainWindow(Plugin plugin, string goatImagePath)
-        : base("My Amazing Window##With a hidden ID", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse)
+        : base("Debug Window##With a hidden ID", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse)
     {
         SizeConstraints = new WindowSizeConstraints
         {
@@ -27,8 +27,8 @@ public class MainWindow : Window, IDisposable
             MaximumSize = new Vector2(float.MaxValue, float.MaxValue)
         };
 
-        GoatImagePath = goatImagePath;
-        Plugin = plugin;
+        this.goatImagePath = goatImagePath;
+        this.plugin = plugin;
     }
 
     public void Dispose() { }
@@ -39,11 +39,11 @@ public class MainWindow : Window, IDisposable
         // These expect formatting parameter if any part of the text contains a "%", which we can't
         // provide through our bindings, leading to a Crash to Desktop.
         // Replacements can be found in the ImGuiHelpers Class
-        ImGui.TextUnformatted($"The random config bool is {Plugin.Configuration.SomePropertyToBeSavedAndWithADefault}");
+        ImGui.TextUnformatted($"The random config bool is {plugin.Configuration.SomePropertyToBeSavedAndWithADefault}");
 
         if (ImGui.Button("Show Settings"))
         {
-            Plugin.ToggleConfigUI();
+            plugin.ToggleConfigUI();
         }
 
         ImGui.Spacing();
@@ -56,8 +56,8 @@ public class MainWindow : Window, IDisposable
             // Check if this child is drawing
             if (child.Success)
             {
-                ImGui.TextUnformatted("Have a goat:");
-                var goatImage = Plugin.TextureProvider.GetFromFile(GoatImagePath).GetWrapOrDefault();
+                ImGui.TextUnformatted("Image:");
+                var goatImage = Plugin.TextureProvider.GetFromFile(goatImagePath).GetWrapOrDefault();
                 if (goatImage != null)
                 {
                     using (ImRaii.PushIndent(55f))
@@ -75,7 +75,7 @@ public class MainWindow : Window, IDisposable
                 // Example for other services that Dalamud provides.
                 // ClientState provides a wrapper filled with information about the local player object and client.
 
-                var localPlayer = Plugin.ClientState.LocalPlayer;
+                var localPlayer = Plugin.ObjectTable.LocalPlayer;
                 if (localPlayer == null)
                 {
                     ImGui.TextUnformatted("Our local player is currently not loaded.");
@@ -87,6 +87,10 @@ public class MainWindow : Window, IDisposable
                     ImGui.TextUnformatted("Our current job is currently not valid.");
                     return;
                 }
+
+                //Checks if we are MCH
+                var isMch = localPlayer.ClassJob.RowId == 31;
+                ImGui.TextUnformatted($"Is Machinist (MCH): {isMch}");
 
                 // Access the current job gauge values for the player job
                 var gauge = Plugin.JobGauge;

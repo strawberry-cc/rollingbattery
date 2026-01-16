@@ -7,7 +7,7 @@ namespace RollingBattery.Windows;
 
 public class ConfigWindow : Window, IDisposable
 {
-    private Configuration Configuration;
+    private Configuration config;
 
     public ConfigWindow(Plugin plugin) : base("RollingBattery Config###With a constant ID")
     {
@@ -17,14 +17,14 @@ public class ConfigWindow : Window, IDisposable
         Size = new Vector2(500, 200);
         SizeCondition = ImGuiCond.Always;
 
-        Configuration = plugin.Configuration;
+        config = plugin.Configuration;
     }
 
     public void Dispose() { }
 
     public override void PreDraw()
     {
-        if (Configuration.IsConfigWindowMovable)
+        if (config.IsConfigWindowMovable)
         {
             Flags &= ~ImGuiWindowFlags.NoMove;
         }
@@ -53,32 +53,32 @@ public class ConfigWindow : Window, IDisposable
         */
 
         // === Sliders for overlay text ===
-        float scale = Configuration.TextScale;
+        float scale = config.TextScale;
         if (ImGui.SliderFloat("Text Scale", ref scale, 0.5f, 3.0f, "%.1f"))
         {
-            Configuration.TextScale = scale;
-            Configuration.Save();
+            config.TextScale = scale;
+            config.Save();
         }
 
-        float xpos = Configuration.TextPosX;
+        float xpos = config.TextPosX;
         if (ImGui.SliderFloat("Text X", ref xpos, 0f, 2560f, "%.0f"))
         {
-            Configuration.TextPosX = xpos;
-            Configuration.Save();
+            config.TextPosX = xpos;
+            config.Save();
         }
 
-        float ypos = Configuration.TextPosY;
+        float ypos = config.TextPosY;
         if (ImGui.SliderFloat("Text Y", ref ypos, 0f, 2560f, "%.0f"))
         {
-            Configuration.TextPosY = ypos;
-            Configuration.Save();
+            config.TextPosY = ypos;
+            config.Save();
         }
 
-        var textColor = Configuration.TextColor;
+        var textColor = config.TextColor;
         if (ImGui.ColorEdit4("Text Color", ref textColor))
         {
-            Configuration.TextColor = textColor;
-            Configuration.Save();
+            config.TextColor = textColor;
+            config.Save();
         }
 
     }
